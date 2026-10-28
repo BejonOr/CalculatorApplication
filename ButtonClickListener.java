@@ -2,7 +2,7 @@
 Class that implements the ActionListener to handle button clicks in the calculator
 
 display - a WatermarkTextField with a background image containing current input or result of a calculation
-result - a double representing the result of the previous calculation
+current - a double representing the result of the previous calculation
 operator - a char representing the current operator (+, -, *, /)
 currentValue - a String representing the current value in the display
 
@@ -21,14 +21,21 @@ public class ButtonClickListener implements ActionListener{
         this.display = display;
     }
 
-    //Checks if the display is showing "Undefined" and clears the display if it is
+/* 
+ * Checks if the display is showing "Undefined" and clears the display if it is      
+ */
     public void isUndefined() {
         if (display.getText().equals("Undefined")) {
             display.setText("");
         }
     }
 
-    //If the input is a whole number, display it without a decimal point
+/* 
+ * If the input is a whole number, display it without a decimal point
+ *
+ * @param value   The double being changed
+ * 
+ */
     public void doubleToInt(double value) {
         if (value % 1 == 0) {
             display.setText(String.valueOf((int) value));
@@ -38,6 +45,12 @@ public class ButtonClickListener implements ActionListener{
         }
     }
 
+/* 
+ * Checks the operator and returns a calculated value based on the operator
+ *
+ * @return value   The result of the current value and a second operand in a math operation
+ * 
+ */
     public double operatorCheck() {
         double value = 0;
         switch(operator) {
