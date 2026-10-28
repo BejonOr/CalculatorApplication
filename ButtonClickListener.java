@@ -31,7 +31,6 @@ public class ButtonClickListener implements ActionListener{
     //If the input is a whole number, display it without a decimal point
     public void doubleToInt(double value) {
         if (value % 1 == 0) {
-            value = (int) value;
             display.setText(String.valueOf((int) value));
         }
         else {
