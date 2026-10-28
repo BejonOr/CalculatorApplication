@@ -8,7 +8,6 @@ public class Main {
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
             CalculatorApp app = new CalculatorApp();
-            app.setDefaultCloseOperation(app.EXIT_ON_CLOSE);
             app.setVisible(true);
         });
     }
