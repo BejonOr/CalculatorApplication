@@ -38,6 +38,29 @@ public class ButtonClickListener implements ActionListener{
         }
     }
 
+    public double operatorCheck() {
+        double value = 0;
+        switch(operator) {
+                case '+':
+                    value = current + secondOperand;
+                    break;
+                case '-':
+                    value = current - secondOperand;
+                    break;
+                case '*':
+                    value = current * secondOperand;
+                    break;
+                case '/':
+                    if (secondOperand == 0) {
+                        display.setText("Undefined");
+                        //return;
+                    }
+                    value = current / secondOperand;
+                    break;
+            }
+            return value;  
+    }
+
     @Override
     public void actionPerformed(ActionEvent e){
         String command = e.getActionCommand();
@@ -131,26 +154,14 @@ public class ButtonClickListener implements ActionListener{
             }
 
             secondOperand = Double.parseDouble(display.getText());
-            double answer = 0;
 
-            switch(operator) {
-                case '+':
-                    answer = current + secondOperand;
-                    break;
-                case '-':
-                    answer = current - secondOperand;
-                    break;
-                case '*':
-                    answer = current * secondOperand;
-                    break;
-                case '/':
-                    if (secondOperand == 0) {
+            double answer = operatorCheck();
+            if (operator == '/') {
+                if (secondOperand == 0) {
                         display.setText("Undefined");
                         return;
                     }
-                    answer = current / secondOperand;
-                    break;
-            }    
+            } 
             display.setText("");
 
             doubleToInt(answer);
