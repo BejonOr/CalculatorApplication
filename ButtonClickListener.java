@@ -43,22 +43,24 @@ public class ButtonClickListener implements ActionListener{
         String command = e.getActionCommand();
         
         if (command.charAt(0) >= '0' && command.charAt(0) <= '9' || command.equals(".")){
+            String text = display.getText();
             //Ensures user cannot add multiple decimal points to a number
-            if (command.equals(".") && display.getText().contains(".")) {
+            if (command.equals(".") && text.contains(".")) {
                 return; 
             }
             isUndefined();
-            display.setText(display.getText()  + command);
+            display.setText(text  + command);
         }
 
         else if (command.equals("+") || command.equals("-") || command.equals("*") || command.equals("/")) {
+            String text = display.getText();
             //Prevents operator button from being pressed before a number
-            if (display.getText().isEmpty()) {
+            if (text.isEmpty()) {
                 return; 
             }
             isUndefined();
             // result = Double.parseDouble(display.getText());
-            current = Double.parseDouble(display.getText());
+            current = Double.parseDouble(text);
             operator = command.charAt(0);
             display.setText("");
         }
