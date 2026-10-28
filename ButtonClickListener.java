@@ -12,7 +12,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 public class ButtonClickListener implements ActionListener{
     private final WatermarkTextField display;
-    private double result;
+    private double current;
     private char operator;
     private String currentValue;
 
@@ -57,7 +57,8 @@ public class ButtonClickListener implements ActionListener{
                 return; 
             }
             isUndefined();
-            result = Double.parseDouble(display.getText());
+            // result = Double.parseDouble(display.getText());
+            current = Double.parseDouble(display.getText());
             operator = command.charAt(0);
             display.setText("");
         }
@@ -65,16 +66,16 @@ public class ButtonClickListener implements ActionListener{
         //Displays current value as a percentage of 100
         else if (command.equals("%")) {
             isUndefined();
-            result = Double.parseDouble(display.getText());
-            result = result / 100;
-            doubleToInt(result);
+            current = Double.parseDouble(display.getText());
+            current = current / 100;
+            doubleToInt(current);
         }
 
 
         //Clears display and resets variables
         else if (command.equals("AC")) {
             display.setText("");
-            result = 0;
+            current = 0;
             operator = '\0';
         }
 
@@ -132,20 +133,20 @@ public class ButtonClickListener implements ActionListener{
 
             switch(operator) {
                 case '+':
-                    answer = result + secondOperand;
+                    answer = current + secondOperand;
                     break;
                 case '-':
-                    answer = result - secondOperand;
+                    answer = current - secondOperand;
                     break;
                 case '*':
-                    answer = result * secondOperand;
+                    answer = current * secondOperand;
                     break;
                 case '/':
                     if (secondOperand == 0) {
                         display.setText("Undefined");
                         return;
                     }
-                    answer = result / secondOperand;
+                    answer = current / secondOperand;
                     break;
             }    
             display.setText("");
