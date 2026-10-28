@@ -15,6 +15,7 @@ public class ButtonClickListener implements ActionListener{
     private double current;
     private char operator;
     private String currentValue;
+    private double secondOperand;
 
     public ButtonClickListener(WatermarkTextField display){
         this.display = display;
@@ -128,7 +129,7 @@ public class ButtonClickListener implements ActionListener{
                 return; 
             }
 
-            double secondOperand = Double.parseDouble(display.getText());
+            secondOperand = Double.parseDouble(display.getText());
             double answer = 0;
 
             switch(operator) {
