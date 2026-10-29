@@ -129,6 +129,12 @@ public class ButtonClickListener implements ActionListener{
                 display.setText("-");
             }
 
+            currentValue = display.getText();
+
+            if(currentValue.equals("-")){
+                return;
+            }
+
             double val = Double.parseDouble(currentValue);
 
             if (val > 0) {
